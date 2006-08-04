@@ -1,0 +1,13 @@
+<module>
+	<rawname>speeddial</rawname>
+	<name>Speed dial functions</name>
+	<version>0.1</version>
+	<type>module</type>
+	<category>Basic</category>
+	<depends>
+		<phonebook/>
+	</depends>
+	<location>release/speeddial-0.1.tgz</location>
+	<info>http://aussievoip.com.au/wiki/freePBX-Features</info>
+	<md5sum>4c34e94ce49061c775e1a03dbd3e9a80</md5sum>
+</module>

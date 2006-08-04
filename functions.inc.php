@@ -1,0 +1,122 @@
+<?php
+ /* $Id:$ */
+
+// returns a associative arrays with keys 'destination' and 'description'
+function speeddial_destinations() {
+	// return an associative array with destination and description
+	$extens[] = array('destination' => 'app-pbdirectory,pbdirectory,1', 'description' => 'Phonebook Directory');
+	return $extens;
+}
+
+function speeddial_get_config($engine) {
+        $modulename = 'speeddial';
+
+        // This generates the dialplan
+        global $ext;
+        switch($engine) {
+		case "asterisk":
+			$fcc = new featurecode('speeddial', 'callspeeddial');
+			$callcode = $fcc->getCodeActive();
+			unset($fcc);
+			
+			$fcc = new featurecode('speeddial', 'setspeeddial');
+			$setcode = $fcc->getCodeActive();
+			unset($fcc);
+
+			if (!empty($code)) {
+				$ext->add('app-pbdirectory', $code, '', new ext_answer());
+				$ext->add('app-pbdirectory', $code, '', new ext_wait(1));
+				$ext->add('app-pbdirectory', $code, '', new ext_goto(1,'pbdirectory'));
+			}
+
+			// [macro-speeddial-clean]
+			// clean the 0's off of the variable named passed in ARG1
+			$ext->add('macro-speeddial-clean', 's', '', new ext_noop('Cleaing (stripping leading 0s from ${${ARG1}}) in var ${ARG1}'));
+			// while ( substr($$arg1,0,1) = '0') {
+			$ext->add('macro-speeddial-clean', 's', 'start', new ext_gotoif('$[${${ARG1}:0:1}=0]','strip','clean'));
+			//   $$arg1 = substr($$arg1,1);
+			$ext->add('macro-speeddial-clean', 's', 'strip', new ext_set('${ARG1}','${${ARG1}:1}'));
+			// }
+			$ext->add('macro-speeddial-clean', 's', '', new ext_goto('start'));
+			$ext->add('macro-speeddial-clean', 's', 'clean', new ext_noop('${ARG1} cleaned to ${${ARG1}}'));
+			
+			
+			// [macro-speeddial-lookup]
+			// arg1 is speed dial location,  arg2 (optional) is user caller ID
+			$ext->add('macro-speeddial-lookup', 's', '', new ext_gotoif('$["${ARG2}"=""]]','lookupsys'));
+			$ext->add('macro-speeddial-lookup', 's', '', new ext_set('SPEEDDIALNUMBER',''));
+			$ext->add('macro-speeddial-lookup', 's', 'lookupuser', new ext_dbget('SPEEDDIALNUMBER','AMPUSER/${ARG2}/speeddials/${ARG1}'));
+			$ext->add('macro-speeddial-lookup', 's', '', new ext_gotoif('$["${SPEEDDIALNUMBER}"=""]','lookupsys'));
+			$ext->add('macro-speeddial-lookup', 's', '', new ext_noop('Found speeddial ${ARG1} for user ${ARG2}: ${SPEEDDIALNUMBER}'));
+			$ext->add('macro-speeddial-lookup', 's', '', new ext_goto('end'));
+			$ext->add('macro-speeddial-lookup', 's', 'lookupsys', new ext_dbget('SPEEDDIALNUMBER','sysspeeddials/${ARG1}'), 'lookupuser',101);
+			$ext->add('macro-speeddial-lookup', 's', '', new ext_gotoif('$["${SPEEDDIALNUMBER}"=""]','failed'));
+			$ext->add('macro-speeddial-lookup', 's', '', new ext_noop('Found system speeddial ${ARG1}: ${SPEEDDIALNUMBER}'));
+			$ext->add('macro-speeddial-lookup', 's', '', new ext_goto('end'));
+			$ext->add('macro-speeddial-lookup', 's', 'failed', new ext_noop('No system or user speeddial found'), 'lookupsys',101);
+			$ext->add('macro-speeddial-lookup', 's', 'end', new ext_noop());
+			
+			if (!empty($callcode)) {
+				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_macro('user-callerid',''));
+				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_set('SPEEDDIALLOCATION','${EXTEN:'.(strlen($callcode)).'}'));
+				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_macro('speeddial-clean','SPEEDDIALLOCATION'));
+				$ext->add('app-speeddial', '_'.$callcode.'.', 'lookup', new ext_macro('speeddial-lookup','${SPEEDDIALLOCATION},${CALLERID(num)}'));
+				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_gotoif('$["${SPEEDDIALNUMBER}"=""]','failed'));
+				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_dial('Local/${SPEEDDIALNUMBER}@from-internal/n','',''));
+				$ext->add('app-speeddial', '_'.$callcode.'.', 'failed', new ext_congestion(), 'lookup',101);
+				
+			}
+			
+			if (!empty($setcode)) {
+				$ext->add('app-speeddial', $setcode, '', new ext_goto(1, 's', 'app-speeddial-set'));
+			}
+			
+			
+			
+			$ext->add('app-speeddial-set', 's', '', new ext_macro('user-callerid',''));
+			// "enter speed dial location number"
+			$ext->add('app-speeddial-set', 's', 'setloc', new ext_read('newlocation','speed-enterlocation'));
+			$ext->add('app-speeddial-set', 's', '', new ext_macro('speeddial-clean','newlocation'));
+			$ext->add('app-speeddial-set', 's', 'lookup', new ext_macro('speeddial-lookup','${newlocation},${CALLERID(num)}'));
+			
+			// "enter phone number"
+			$ext->add('app-speeddial-set', 's', 'setnum', new ext_read('newnum','speed-enternum'));
+			
+			// "speed dial location "
+			$ext->add('app-speeddial-set', 's', 'success', new ext_playback('speed-location'));
+			$ext->add('app-speeddial-set', 's', '', new ext_saynumber('${newlocation}'));
+			// "is set to "
+			$ext->add('app-speeddial-set', 's', '', new ext_playback('speed-setto'));
+			$ext->add('app-speeddial-set', 's', '', new ext_saydigits('${newnum}'));
+			$ext->add('app-speeddial-set', 's', '', new ext_hangup());
+
+			
+			// conflicts menu
+			// "speed dial location"
+			$ext->add('app-speeddial-set', 's', 'conflicts', new ext_playback('speed-location'), 'lookup',101);
+			$ext->add('app-speeddial-set', 's', '', new ext_saynumber('${newlocation}'));
+			// "is already set. Press 1 to hear current phone number, 2 to pick a new location, 3 to set a new phone number"
+			$ext->add('app-speeddial-set', 's', '', new ext_background('speed-conflictsmenu'));
+			
+			// "speed dial location"
+			$ext->add('app-speeddial-set', '1', '', new ext_playback('speed-location'));
+			$ext->add('app-speeddial-set', '1', '', new ext_saynumber('${newlocation}'));
+			// "is set to "
+			$ext->add('app-speeddial-set', '1', '', new ext_playback('speed-setto'));
+			$ext->add('app-speeddial-set', '1', '', new ext_saydigits('${SPEEDDIALNUMBER}'));
+			$ext->add('app-speeddial-set', '1', '', new ext_goto('conflicts'));
+			
+			$ext->add('app-speeddial-set', '2', '', new ext_goto('setloc'));
+			
+			$ext->add('app-speeddial-set', '3', '', new ext_goto('setnum'));
+			
+			$ext->add('app-speeddial-set', 't', '', new ext_congestion());
+			
+			
+			$ext->addInclude('from-internal-additional', 'app-speeddial');
+			
+		break;
+        }
+}
+
+?>
