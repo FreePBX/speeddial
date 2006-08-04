@@ -63,7 +63,9 @@ function speeddial_get_config($engine) {
 				$ext->add('app-speeddial', '_'.$callcode.'.', 'lookup', new ext_macro('speeddial-lookup','${SPEEDDIALLOCATION},${CALLERID(num)}'));
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_gotoif('$["${SPEEDDIALNUMBER}"=""]','failed'));
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_dial('Local/${SPEEDDIALNUMBER}@from-internal/n','',''));
-				$ext->add('app-speeddial', '_'.$callcode.'.', 'failed', new ext_congestion(), 'lookup',101);
+				
+				$ext->add('app-speeddial', '_'.$callcode.'.', 'failed', new ext_playback('speed-dial-empty'), 'lookup',101);
+				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_congestion());
 				
 			}
 			
@@ -78,37 +80,42 @@ function speeddial_get_config($engine) {
 			$ext->add('app-speeddial-set', 's', 'setloc', new ext_read('newlocation','speed-enterlocation'));
 			$ext->add('app-speeddial-set', 's', '', new ext_macro('speeddial-clean','newlocation'));
 			$ext->add('app-speeddial-set', 's', 'lookup', new ext_macro('speeddial-lookup','${newlocation},${CALLERID(num)}'));
+			$ext->add('app-speeddial-set', 's', 'lookup', new ext_gotoif('$["${SPEEDDIALNUMBER}"!=""]', 'conflicts'));
 			
 			// "enter phone number"
-			$ext->add('app-speeddial-set', 's', 'setnum', new ext_read('newnum','speed-enternum'));
+			$ext->add('app-speeddial-set', 's', 'setnum', new ext_read('newnum','speed-enternumber'));
 			
+			
+			$ext->add('app-speeddial-set', 's', 'success', new ext_dbput('AMPUSER/${CALLERID(num)}/speeddials/${newlocation}','${newnum}'));
 			// "speed dial location "
-			$ext->add('app-speeddial-set', 's', 'success', new ext_playback('speed-location'));
+			$ext->add('app-speeddial-set', 's', '', new ext_playback('speed-dial'));
 			$ext->add('app-speeddial-set', 's', '', new ext_saynumber('${newlocation}'));
 			// "is set to "
-			$ext->add('app-speeddial-set', 's', '', new ext_playback('speed-setto'));
+			$ext->add('app-speeddial-set', 's', '', new ext_playback('is-set-to'));
 			$ext->add('app-speeddial-set', 's', '', new ext_saydigits('${newnum}'));
 			$ext->add('app-speeddial-set', 's', '', new ext_hangup());
 
 			
 			// conflicts menu
 			// "speed dial location"
-			$ext->add('app-speeddial-set', 's', 'conflicts', new ext_playback('speed-location'), 'lookup',101);
+			$ext->add('app-speeddial-set', 's', 'conflicts', new ext_playback('speed-dial'));
 			$ext->add('app-speeddial-set', 's', '', new ext_saynumber('${newlocation}'));
-			// "is already set. Press 1 to hear current phone number, 2 to pick a new location, 3 to set a new phone number"
-			$ext->add('app-speeddial-set', 's', '', new ext_background('speed-conflictsmenu'));
+			// "is already set."
+			$ext->add('app-speeddial-set', 's', '', new ext_playback('is-in-use'));
+			// "Press 1 to hear current phone number, 2 to pick a new location, 3 to set a new phone number"
+			$ext->add('app-speeddial-set', 's', '', new ext_background('press-1&to-listen-to-it&press-2&to-enter-a-diff&location&press-3&to-change&telephone-number'));
 			
 			// "speed dial location"
-			$ext->add('app-speeddial-set', '1', '', new ext_playback('speed-location'));
+			$ext->add('app-speeddial-set', '1', '', new ext_playback('speed-dial'));
 			$ext->add('app-speeddial-set', '1', '', new ext_saynumber('${newlocation}'));
 			// "is set to "
-			$ext->add('app-speeddial-set', '1', '', new ext_playback('speed-setto'));
+			$ext->add('app-speeddial-set', '1', '', new ext_playback('is-set-to'));
 			$ext->add('app-speeddial-set', '1', '', new ext_saydigits('${SPEEDDIALNUMBER}'));
-			$ext->add('app-speeddial-set', '1', '', new ext_goto('conflicts'));
+			$ext->add('app-speeddial-set', '1', '', new ext_goto('conflicts','s'));
 			
-			$ext->add('app-speeddial-set', '2', '', new ext_goto('setloc'));
+			$ext->add('app-speeddial-set', '2', '', new ext_goto('setloc','s'));
 			
-			$ext->add('app-speeddial-set', '3', '', new ext_goto('setnum'));
+			$ext->add('app-speeddial-set', '3', '', new ext_goto('setnum','s'));
 			
 			$ext->add('app-speeddial-set', 't', '', new ext_congestion());
 			
