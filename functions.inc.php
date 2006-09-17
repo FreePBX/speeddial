@@ -24,7 +24,7 @@ function speeddial_get_config($engine) {
 			unset($fcc);
 
 			if (!empty($code)) {
-				$ext->add('app-pbdirectory', $code, '', new ext_answer());
+				$ext->add('app-pbdirectory', $code, '', new ext_answer(''));
 				$ext->add('app-pbdirectory', $code, '', new ext_wait(1));
 				$ext->add('app-pbdirectory', $code, '', new ext_goto(1,'pbdirectory'));
 			}
@@ -54,7 +54,7 @@ function speeddial_get_config($engine) {
 			$ext->add('macro-speeddial-lookup', 's', '', new ext_noop('Found system speeddial ${ARG1}: ${SPEEDDIALNUMBER}'));
 			$ext->add('macro-speeddial-lookup', 's', '', new ext_goto('end'));
 			$ext->add('macro-speeddial-lookup', 's', 'failed', new ext_noop('No system or user speeddial found'), 'lookupsys',101);
-			$ext->add('macro-speeddial-lookup', 's', 'end', new ext_noop());
+			$ext->add('macro-speeddial-lookup', 's', 'end', new ext_noop('End of Speeddial-lookup'));
 			
 			if (!empty($callcode)) {
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_macro('user-callerid',''));
@@ -65,7 +65,7 @@ function speeddial_get_config($engine) {
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_dial('Local/${SPEEDDIALNUMBER}@from-internal/n','',''));
 				
 				$ext->add('app-speeddial', '_'.$callcode.'.', 'failed', new ext_playback('speed-dial-empty'), 'lookup',101);
-				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_congestion());
+				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_congestion(''));
 				
 			}
 			
@@ -93,7 +93,7 @@ function speeddial_get_config($engine) {
 			// "is set to "
 			$ext->add('app-speeddial-set', 's', '', new ext_playback('is-set-to'));
 			$ext->add('app-speeddial-set', 's', '', new ext_saydigits('${newnum}'));
-			$ext->add('app-speeddial-set', 's', '', new ext_hangup());
+			$ext->add('app-speeddial-set', 's', '', new ext_hangup(''));
 
 			
 			// conflicts menu
@@ -117,7 +117,7 @@ function speeddial_get_config($engine) {
 			
 			$ext->add('app-speeddial-set', '3', '', new ext_goto('setnum','s'));
 			
-			$ext->add('app-speeddial-set', 't', '', new ext_congestion());
+			$ext->add('app-speeddial-set', 't', '', new ext_congestion(''));
 			
 			
 			$ext->addInclude('from-internal-additional', 'app-speeddial');
