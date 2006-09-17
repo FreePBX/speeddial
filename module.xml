@@ -5,7 +5,7 @@
 	<type>module</type>
 	<category>Basic</category>
 	<depends>
-		<phonebook/>
+		<module>phonebook</module>
 	</depends>
 	<location>release/2.2/speeddial-1.0.2.tgz</location>
 	<info>http://aussievoip.com.au/wiki/freePBX-Features</info>
