@@ -3,7 +3,7 @@
 	<name>Speed dial functions</name>
 	<version>1.0.2</version>
 	<type>module</type>
-	<category>Basic</category>
+	<category>CID/Number Management</category>
 	<depends>
 		<module>phonebook</module>
 	</depends>
