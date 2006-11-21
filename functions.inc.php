@@ -1,13 +1,6 @@
 <?php
  /* $Id:$ */
 
-// returns a associative arrays with keys 'destination' and 'description'
-function speeddial_destinations() {
-	// return an associative array with destination and description
-	$extens[] = array('destination' => 'app-pbdirectory,pbdirectory,1', 'description' => 'Phonebook Directory');
-	return $extens;
-}
-
 function speeddial_get_config($engine) {
         $modulename = 'speeddial';
 
