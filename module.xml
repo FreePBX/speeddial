@@ -12,7 +12,7 @@
 	<depends>
 		<module>phonebook</module>
 	</depends>
-	<location>release/2.2/speeddial-1.0.2.tgz</location>
+	<location>release/2.3/speeddial-1.0.3.tgz</location>
 	<info>http://aussievoip.com.au/wiki/freePBX-Features</info>
-	<md5sum>5a11d1460ac6587e636308a1e8c83974</md5sum>
+	<md5sum>d34b8498265d4ce6594db9f4879a0004</md5sum>
 </module>
