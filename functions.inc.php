@@ -53,7 +53,7 @@ function speeddial_get_config($engine) {
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_macro('user-callerid',''));
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_set('SPEEDDIALLOCATION','${EXTEN:'.(strlen($callcode)).'}'));
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_macro('speeddial-clean','SPEEDDIALLOCATION'));
-				$ext->add('app-speeddial', '_'.$callcode.'.', 'lookup', new ext_macro('speeddial-lookup','${SPEEDDIALLOCATION},${CALLERID(num)}'));
+				$ext->add('app-speeddial', '_'.$callcode.'.', 'lookup', new ext_macro('speeddial-lookup','${SPEEDDIALLOCATION},${AMPUSER}'));
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_gotoif('$["${SPEEDDIALNUMBER}"=""]','failed'));
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_dial('Local/${SPEEDDIALNUMBER}@from-internal/n','',''));
 				
@@ -72,14 +72,14 @@ function speeddial_get_config($engine) {
 			// "enter speed dial location number"
 			$ext->add('app-speeddial-set', 's', 'setloc', new ext_read('newlocation','speed-enterlocation'));
 			$ext->add('app-speeddial-set', 's', '', new ext_macro('speeddial-clean','newlocation'));
-			$ext->add('app-speeddial-set', 's', 'lookup', new ext_macro('speeddial-lookup','${newlocation},${CALLERID(num)}'));
+			$ext->add('app-speeddial-set', 's', 'lookup', new ext_macro('speeddial-lookup','${newlocation},${AMPUSER}'));
 			$ext->add('app-speeddial-set', 's', 'lookup', new ext_gotoif('$["${SPEEDDIALNUMBER}"!=""]', 'conflicts'));
 			
 			// "enter phone number"
 			$ext->add('app-speeddial-set', 's', 'setnum', new ext_read('newnum','speed-enternumber'));
 			
 			
-			$ext->add('app-speeddial-set', 's', 'success', new ext_dbput('AMPUSER/${CALLERID(num)}/speeddials/${newlocation}','${newnum}'));
+			$ext->add('app-speeddial-set', 's', 'success', new ext_dbput('AMPUSER/${AMPUSER}/speeddials/${newlocation}','${newnum}'));
 			// "speed dial location "
 			$ext->add('app-speeddial-set', 's', '', new ext_playback('speed-dial'));
 			$ext->add('app-speeddial-set', 's', '', new ext_saynumber('${newlocation}'));

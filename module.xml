@@ -1,7 +1,12 @@
 <module>
 	<rawname>speeddial</rawname>
 	<name>Speed dial functions</name>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
+	<changelog>
+	*1.0.3* changed ${CALLERID(number)} to ${AMPUSER} to accomodate CID number masquerading
+	*1.0.2* No comment
+	*1.0.1* First release for 2.2
+	</changelog>
 	<type>module</type>
 	<category>CID &amp; Number Management</category>
 	<depends>
