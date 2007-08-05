@@ -22,18 +22,6 @@ function speeddial_get_config($engine) {
 				$ext->add('app-pbdirectory', $code, '', new ext_goto(1,'pbdirectory'));
 			}
 
-			// [macro-speeddial-clean]
-			// clean the 0's off of the variable named passed in ARG1
-			$ext->add('macro-speeddial-clean', 's', '', new ext_noop('Cleaing (stripping leading 0s from ${${ARG1}}) in var ${ARG1}'));
-			// while ( substr($$arg1,0,1) = '0') {
-			$ext->add('macro-speeddial-clean', 's', 'start', new ext_gotoif('$[${${ARG1}:0:1}=0]','strip','clean'));
-			//   $$arg1 = substr($$arg1,1);
-			$ext->add('macro-speeddial-clean', 's', 'strip', new ext_set('${ARG1}','${${ARG1}:1}'));
-			// }
-			$ext->add('macro-speeddial-clean', 's', '', new ext_goto('start'));
-			$ext->add('macro-speeddial-clean', 's', 'clean', new ext_noop('${ARG1} cleaned to ${${ARG1}}'));
-			
-			
 			// [macro-speeddial-lookup]
 			// arg1 is speed dial location,  arg2 (optional) is user caller ID
 			$ext->add('macro-speeddial-lookup', 's', '', new ext_gotoif('$["${ARG2}"=""]]','lookupsys'));
@@ -52,7 +40,6 @@ function speeddial_get_config($engine) {
 			if (!empty($callcode)) {
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_macro('user-callerid',''));
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_set('SPEEDDIALLOCATION','${EXTEN:'.(strlen($callcode)).'}'));
-				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_macro('speeddial-clean','SPEEDDIALLOCATION'));
 				$ext->add('app-speeddial', '_'.$callcode.'.', 'lookup', new ext_macro('speeddial-lookup','${SPEEDDIALLOCATION},${AMPUSER}'));
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_gotoif('$["${SPEEDDIALNUMBER}"=""]','failed'));
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_dial('Local/${SPEEDDIALNUMBER}@from-internal/n','',''));
@@ -71,7 +58,6 @@ function speeddial_get_config($engine) {
 			$ext->add('app-speeddial-set', 's', '', new ext_macro('user-callerid',''));
 			// "enter speed dial location number"
 			$ext->add('app-speeddial-set', 's', 'setloc', new ext_read('newlocation','speed-enterlocation'));
-			$ext->add('app-speeddial-set', 's', '', new ext_macro('speeddial-clean','newlocation'));
 			$ext->add('app-speeddial-set', 's', 'lookup', new ext_macro('speeddial-lookup','${newlocation},${AMPUSER}'));
 			$ext->add('app-speeddial-set', 's', 'lookup', new ext_gotoif('$["${SPEEDDIALNUMBER}"!=""]', 'conflicts'));
 			
@@ -82,7 +68,7 @@ function speeddial_get_config($engine) {
 			$ext->add('app-speeddial-set', 's', 'success', new ext_dbput('AMPUSER/${AMPUSER}/speeddials/${newlocation}','${newnum}'));
 			// "speed dial location "
 			$ext->add('app-speeddial-set', 's', '', new ext_playback('speed-dial'));
-			$ext->add('app-speeddial-set', 's', '', new ext_saynumber('${newlocation}'));
+			$ext->add('app-speeddial-set', 's', '', new ext_saydigits('${newlocation}'));
 			// "is set to "
 			$ext->add('app-speeddial-set', 's', '', new ext_playback('is-set-to'));
 			$ext->add('app-speeddial-set', 's', '', new ext_saydigits('${newnum}'));
@@ -92,7 +78,7 @@ function speeddial_get_config($engine) {
 			// conflicts menu
 			// "speed dial location"
 			$ext->add('app-speeddial-set', 's', 'conflicts', new ext_playback('speed-dial'));
-			$ext->add('app-speeddial-set', 's', '', new ext_saynumber('${newlocation}'));
+			$ext->add('app-speeddial-set', 's', '', new ext_saydigits('${newlocation}'));
 			// "is already set."
 			$ext->add('app-speeddial-set', 's', '', new ext_playback('is-in-use'));
 			// "Press 1 to hear current phone number, 2 to pick a new location, 3 to set a new phone number"
@@ -100,7 +86,7 @@ function speeddial_get_config($engine) {
 			
 			// "speed dial location"
 			$ext->add('app-speeddial-set', '1', '', new ext_playback('speed-dial'));
-			$ext->add('app-speeddial-set', '1', '', new ext_saynumber('${newlocation}'));
+			$ext->add('app-speeddial-set', '1', '', new ext_saydigits('${newlocation}'));
 			// "is set to "
 			$ext->add('app-speeddial-set', '1', '', new ext_playback('is-set-to'));
 			$ext->add('app-speeddial-set', '1', '', new ext_saydigits('${SPEEDDIALNUMBER}'));
