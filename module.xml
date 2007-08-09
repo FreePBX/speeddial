@@ -1,12 +1,13 @@
 <module>
 	<rawname>speeddial</rawname>
 	<name>Speed dial functions</name>
-	<version>1.0.4</version>
+	<version>1.0.4.1</version>
 	<changelog>
-	*1.0.4* #2049 remove use of speedial-clean, allow leading 0s
-	*1.0.3* changed ${CALLERID(number)} to ${AMPUSER} to accomodate CID number masquerading
-	*1.0.2* No comment
-	*1.0.1* First release for 2.2
+		*1.0.4.1* bump for rc1
+		*1.0.4* #2049 remove use of speedial-clean, allow leading 0s
+		*1.0.3* changed ${CALLERID(number)} to ${AMPUSER} to accomodate CID number masquerading
+		*1.0.2* No comment
+		*1.0.1* First release for 2.2
 	</changelog>
 	<type>module</type>
 	<category>CID &amp; Number Management</category>
@@ -14,6 +15,5 @@
 		<module>phonebook</module>
 	</depends>
 	<location>release/2.3/speeddial-1.0.4.tgz</location>
-	<info>http://aussievoip.com.au/wiki/freePBX-Features</info>
 	<md5sum>402cbbf34bca766db39fcec50e78616c</md5sum>
 </module>
