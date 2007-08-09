@@ -14,6 +14,6 @@
 	<depends>
 		<module>phonebook</module>
 	</depends>
-	<location>release/2.3/speeddial-1.0.4.tgz</location>
-	<md5sum>402cbbf34bca766db39fcec50e78616c</md5sum>
+	<location>release/2.3/speeddial-1.0.4.1.tgz</location>
+	<md5sum>f9d72c28b47b47dd2a6facd96b308227</md5sum>
 </module>
