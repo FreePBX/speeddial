@@ -1,8 +1,9 @@
 <module>
 	<rawname>speeddial</rawname>
 	<name>Speed dial functions</name>
-	<version>1.0.4.1</version>
+	<version>1.0.4.2</version>
 	<changelog>
+		*1.0.4.2* #2329 add WaitExten after background
 		*1.0.4.1* bump for rc1
 		*1.0.4* #2049 remove use of speedial-clean, allow leading 0s
 		*1.0.3* changed ${CALLERID(number)} to ${AMPUSER} to accomodate CID number masquerading

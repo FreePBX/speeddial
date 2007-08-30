@@ -83,6 +83,7 @@ function speeddial_get_config($engine) {
 			$ext->add('app-speeddial-set', 's', '', new ext_playback('is-in-use'));
 			// "Press 1 to hear current phone number, 2 to pick a new location, 3 to set a new phone number"
 			$ext->add('app-speeddial-set', 's', '', new ext_background('press-1&to-listen-to-it&press-2&to-enter-a-diff&location&press-3&to-change&telephone-number'));
+			$ext->add('app-speeddial-set', 's', '', new ext_waitexten('60'));
 			
 			// "speed dial location"
 			$ext->add('app-speeddial-set', '1', '', new ext_playback('speed-dial'));
