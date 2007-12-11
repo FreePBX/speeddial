@@ -1,8 +1,9 @@
 <module>
 	<rawname>speeddial</rawname>
 	<name>Speed dial functions</name>
-	<version>1.0.4.2</version>
+	<version>2.4.0</version>
 	<changelog>
+		*2.4.0* bump for 2.4
 		*1.0.4.2* #2329 add WaitExten after background
 		*1.0.4.1* bump for rc1
 		*1.0.4* #2049 remove use of speedial-clean, allow leading 0s
@@ -15,6 +16,6 @@
 	<depends>
 		<module>phonebook</module>
 	</depends>
-	<location>release/2.3/speeddial-1.0.4.2.tgz</location>
-	<md5sum>7803f7c72d836bfcd20d2c1378f21394</md5sum>
+	<location>release/2.4/speeddial-2.4.0.tgz</location>
+	<md5sum>d6f13333133d27b16ad63aaa7f4b5608</md5sum>
 </module>
