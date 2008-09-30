@@ -1,16 +1,20 @@
 <?php
+//for translation only
+if (false) {
+_("Speed Dial Functions");
+_("Speeddial prefix");
+_("Set user speed dial");
+}
 
 // Enable phonebook directory as a feature code
-$speeddialprefix = _("Speeddial prefix");
 $fcc = new featurecode('speeddial', 'callspeeddial');
-$fcc->setDescription($speeddialprefix);
+$fcc->setDescription('Speeddial prefix');
 $fcc->setDefault('*0');
 $fcc->update();
 unset($fcc);
 
-$setuserspeedial = _("Set user speed dial");
 $fcc = new featurecode('speeddial', 'setspeeddial');
-$fcc->setDescription($setuserspeedial);
+$fcc->setDescription('Set user speed dial');
 $fcc->setDefault('*75');
 $fcc->update();
 unset($fcc);
