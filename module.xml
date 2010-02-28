@@ -1,10 +1,11 @@
 <module>
 	<rawname>speeddial</rawname>
 	<name>Speed Dial Functions</name>
-	<version>2.7.0.0</version>
+	<version>2.7.0.1</version>
 	<publisher>FreePBX</publisher>
 	<license>GPLv2+</license>
 	<changelog>
+		*2.7.0.1* localizations, change back to from-internal changed in #3949
 		*2.7.0.0* #3949
 		*2.6.0.0* localizations, misc
 		*2.5.0* #2887
@@ -21,6 +22,6 @@
 	<depends>
 		<module>phonebook</module>
 	</depends>
-	<location>release/2.7/speeddial-2.7.0.0.tgz</location>
-	<md5sum>4f44d56924ced7b24b0976212f3fe01c</md5sum>
+	<location>release/2.7/speeddial-2.7.0.1.tgz</location>
+	<md5sum>16881b253b998cd0befacc52a7d7d6b7</md5sum>
 </module>
