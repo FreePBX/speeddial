@@ -42,7 +42,7 @@ function speeddial_get_config($engine) {
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_set('SPEEDDIALLOCATION','${EXTEN:'.(strlen($callcode)).'}'));
 				$ext->add('app-speeddial', '_'.$callcode.'.', 'lookup', new ext_macro('speeddial-lookup','${SPEEDDIALLOCATION},${AMPUSER}'));
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_gotoif('$["${SPEEDDIALNUMBER}"=""]','failed'));
-				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_dial('Local/${SPEEDDIALNUMBER}@from-internal/n','',''));
+				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_goto('1','${SPEEDDIALNUMBER}','from-internal'));
 				
 				$ext->add('app-speeddial', '_'.$callcode.'.', 'failed', new ext_playback('speed-dial-empty'), 'lookup',101);
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_congestion(''));
