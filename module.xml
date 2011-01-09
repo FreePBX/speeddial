@@ -1,5 +1,6 @@
 <module>
 	<rawname>speeddial</rawname>
+	<repo>standard</repo>
 	<name>Speed Dial Functions</name>
 	<version>2.8.0.1</version>
 	<publisher>FreePBX</publisher>
