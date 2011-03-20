@@ -1,31 +1,43 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# This file is part of FreePBX.
+#
+#    FreePBX is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    FreePBX is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with FreePBX.  If not, see <http://www.gnu.org/licenses/>.
+#
+# FreePBX language for announcement
+# Copyright (C) 2009, 2010, 2011 Mikael Carlsson
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: FreePBX speeddial\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-09 09:24+0200\n"
-"PO-Revision-Date: 2008-09-16 11:48+0100\n"
+"POT-Creation-Date: 2011-03-18 08:25+0100\n"
+"PO-Revision-Date: 2011-03-20 00:00+0100\n"
 "Last-Translator: Mikael Carlsson <mickecamino@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Swedish\n"
 "X-Poedit-Country: SWEDEN\n"
 
-#: install.php:4
-msgid "Speeddial prefix"
-msgstr "Prefix för kortnummer"
-
-#: install.php:11
-msgid "Set user speed dial"
-msgstr "Skriv in kortnummer"
-
-#: module.xml
 msgid "Speed Dial Functions"
 msgstr "Kortnummer"
 
+msgid "Speeddial prefix"
+msgstr "Prefix för kortnummer"
+
+msgid "Set user speed dial"
+msgstr "Skriv in kortnummer"
+
+msgid "CID & Number Management"
+msgstr "Nummerpresentation och nummerhantering"
