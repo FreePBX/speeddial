@@ -8,22 +8,8 @@
 	<changelog>
 		*2.9.0.1* set repo
 		*2.9.0.0* #4535, #4651
-		*2.8.0.1* #4694
-		*2.8.0.0* published 2.8 version
-		*2.7.0.1* localizations, change back to from-internal changed in #3949
-		*2.7.0.0* #3949
-		*2.6.0.0* localizations, misc
-		*2.5.0* #2887
-		*2.4.0* bump for 2.4
-		*1.0.4.2* #2329 add WaitExten after background
-		*1.0.4.1* bump for rc1
-		*1.0.4* #2049 remove use of speedial-clean, allow leading 0s
-		*1.0.3* changed ${CALLERID(number)} to ${AMPUSER} to accomodate CID number masquerading
-		*1.0.2* No comment
-		*1.0.1* First release for 2.2
 	</changelog>
-	<type>module</type>
-	<category>CID &amp; Number Management</category>
+	<category>Apps</category>
 	<depends>
 		<module>phonebook</module>
 	</depends>
