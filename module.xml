@@ -9,7 +9,7 @@
 		*2.9.0.1* set repo
 		*2.9.0.0* #4535, #4651
 	</changelog>
-	<category>Apps</category>
+	<category>Settings</category>
 	<depends>
 		<module>phonebook</module>
 	</depends>
