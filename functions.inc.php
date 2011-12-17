@@ -1,5 +1,6 @@
 <?php
  /* $Id:$ */
+if (!defined('FREEPBX_IS_AUTH')) { die('No direct script access allowed'); }
 
 function speeddial_get_config($engine) {
         $modulename = 'speeddial';
