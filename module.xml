@@ -17,4 +17,4 @@
 	</depends>
 	<location>release/2.10/speeddial-2.10.0.1.tgz</location>
 	<md5sum>6b571434b8dd5397578f927ff1f67b07</md5sum>
-</module>
+<supported><version>2.10</version></supported></module>
