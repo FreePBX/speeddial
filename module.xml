@@ -1,21 +1,24 @@
 <module>
-	<rawname>speeddial</rawname>
-	<repo>extended</repo>
-	<name>Speed Dial Functions</name>
-	<version>2.11.0.0</version>
-	<publisher>FreePBX</publisher>
-	<license>GPLv2+</license>
-	<changelog>
+  <rawname>speeddial</rawname>
+  <repo>extended</repo>
+  <name>Speed Dial Functions</name>
+  <version>2.11.0.0</version>
+  <publisher>FreePBX</publisher>
+  <license>GPLv2+</license>
+  <changelog>
 		*2.11.0.0* bump version
 		*2.10.0.1* #5478 
 		*2.10.0.0* new version changes
 		*2.9.0.1* set repo
 		*2.9.0.0* #4535, #4651
 	</changelog>
-	<category>Settings</category>
-	<depends>
-		<module>phonebook</module>
-	</depends>
-	<location>release/2.11/speeddial-2.11.0.0.tgz</location>
-	<md5sum>728588a96f50fe993055a834d67f0d27</md5sum>
+  <category>Settings</category>
+  <depends>
+    <module>phonebook</module>
+  </depends>
+  <location>release/2.11/speeddial-2.11.0.0.tgz</location>
+  <md5sum>728588a96f50fe993055a834d67f0d27</md5sum>
+  <supported>
+    <version>2.10</version>
+  </supported>
 </module>
