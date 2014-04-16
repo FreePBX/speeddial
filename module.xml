@@ -2,10 +2,12 @@
   <rawname>speeddial</rawname>
   <repo>extended</repo>
   <name>Speed Dial Functions</name>
-  <version>2.11.0.0</version>
-  <publisher>FreePBX</publisher>
-  <license>GPLv2+</license>
+  <version>2.11.0.1</version>
+	<publisher>Schmooze Com Inc</publisher>
+	<license>GPLv3+</license>
+	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
   <changelog>
+  		*2.11.0.1* update license
 		*2.11.0.0* bump version
 		*2.10.0.1* #5478 
 		*2.10.0.0* new version changes
