@@ -1,11 +1,15 @@
-# FreePBX language template
-# Copyright 2013 Schmooze Com Inc
+# This file is part of FreePBX.
+#
+# For licensing information, please see the file named LICENSE located in the module directory
+#
+# FreePBX language template for speeddial
+# Copyright (C) 2008-2015 Sangoma, Inc.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-23 09:52+0000\n"
+"POT-Creation-Date: 2015-02-11 18:10-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,14 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Speed Dial Functions"
-msgstr ""
-
-msgid "Speeddial prefix"
-msgstr ""
-
+#: /usr/src/freepbx/speeddial/install.php:7
 msgid "Set user speed dial"
 msgstr ""
 
-msgid "Settings"
+#: /usr/src/freepbx/speeddial/install.php:5
+msgid "Speed Dial Functions"
+msgstr ""
+
+#: /usr/src/freepbx/speeddial/install.php:6
+msgid "Speeddial prefix"
 msgstr ""
