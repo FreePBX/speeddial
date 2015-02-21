@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-11 18:10-0500\n"
+"POT-Creation-Date: 2015-02-20 20:02-0500\n"
 "PO-Revision-Date: 2009-04-20 12:04+0100\n"
 "Last-Translator: Séverine GUTIERREZ <severine@medialsace.fr>\n"
 "Language-Team: Français <LL@li.org>\n"
@@ -28,14 +28,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /usr/src/freepbx/speeddial/install.php:7
+#: install.php:7
 msgid "Set user speed dial"
 msgstr "Fixer la numérotation rapide utilisateur"
 
-#: /usr/src/freepbx/speeddial/install.php:5
+#: speeddial.i18n.php:4
+msgid "Settings"
+msgstr ""
+
+#: install.php:5 speeddial.i18n.php:3
 msgid "Speed Dial Functions"
 msgstr "Fonctions de Numérotation Rapide"
 
-#: /usr/src/freepbx/speeddial/install.php:6
+#: install.php:6
 msgid "Speeddial prefix"
 msgstr "Préfixe de Numérotation Rapide"

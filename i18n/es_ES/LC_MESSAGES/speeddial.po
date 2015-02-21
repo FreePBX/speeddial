@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreePBX - módulo speeddial module spanish translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-11 18:10-0500\n"
+"POT-Creation-Date: 2015-02-20 20:02-0500\n"
 "PO-Revision-Date: 2009-01-23 00:14+0100\n"
 "Last-Translator: Juan Asensio Sánchez <okelet@gmail.com>\n"
 "Language-Team: Juan Asensio Sánchez <okelet@gmail.com>\n"
@@ -13,14 +13,18 @@ msgstr ""
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: /usr/src/freepbx/speeddial/install.php:7
+#: install.php:7
 msgid "Set user speed dial"
 msgstr "Establecer marcación rápida de usuario"
 
-#: /usr/src/freepbx/speeddial/install.php:5
+#: speeddial.i18n.php:4
+msgid "Settings"
+msgstr ""
+
+#: install.php:5 speeddial.i18n.php:3
 msgid "Speed Dial Functions"
 msgstr "Funciones de marcación rápida"
 
-#: /usr/src/freepbx/speeddial/install.php:6
+#: install.php:6
 msgid "Speeddial prefix"
 msgstr "Prefijo de marcación rápida"

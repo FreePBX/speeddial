@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-11 18:10-0500\n"
+"POT-Creation-Date: 2015-02-20 20:02-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Francesco Romano <francesco.romano@alteclab.it>\n"
 "Language-Team: Italian\n"
@@ -12,14 +12,18 @@ msgstr ""
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
 
-#: /usr/src/freepbx/speeddial/install.php:7
+#: install.php:7
 msgid "Set user speed dial"
 msgstr "Imposta Selezione Rapida utente"
 
-#: /usr/src/freepbx/speeddial/install.php:5
+#: speeddial.i18n.php:4
+msgid "Settings"
+msgstr ""
+
+#: install.php:5 speeddial.i18n.php:3
 msgid "Speed Dial Functions"
 msgstr "Funzioni Selezione Rapida"
 
-#: /usr/src/freepbx/speeddial/install.php:6
+#: install.php:6
 msgid "Speeddial prefix"
 msgstr "Prefisso Selezione Rapida"
