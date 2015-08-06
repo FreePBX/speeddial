@@ -2,11 +2,12 @@
   <rawname>speeddial</rawname>
   <repo>extended</repo>
   <name>Speed Dial Functions</name>
-  <version>2.11.0.2</version>
-	<publisher>Schmooze Com Inc</publisher>
+  <version>2.11.0.3</version>
+	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
-  <changelog>
+	<changelog>
+		*2.11.0.3* FREEPBX-9931 Allow for multilingual sound structure in remaining OSS modules
 		*2.11.0.2* FREEPBX-7532 app-speeddial-set uses lookup label twice
   		*2.11.0.1* update license
 		*2.11.0.0* bump version

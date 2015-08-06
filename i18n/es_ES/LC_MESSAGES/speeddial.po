@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreePBX - módulo speeddial module spanish translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-20 20:02-0500\n"
+"POT-Creation-Date: 2015-06-19 18:50-0400\n"
 "PO-Revision-Date: 2015-03-30 10:47+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
-"Language-Team: Spanish "
-"<http://weblate.freepbx.org/projects/freepbx/speeddial/es_ES/>\n"
-"Language: es_ES\n"
+"Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
+"speeddial/es_ES/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.2-dev\n"
 "X-Poedit-Language: Spanish\n"
@@ -21,14 +21,13 @@ msgstr ""
 msgid "Set user speed dial"
 msgstr "Establecer marcación rápida de usuario"
 
-#: speeddial.i18n.php:4
-msgid "Settings"
-msgstr "Configuración"
-
-#: install.php:5 speeddial.i18n.php:3
+#: install.php:5
 msgid "Speed Dial Functions"
 msgstr "Funciones de marcación rápida"
 
 #: install.php:6
 msgid "Speeddial prefix"
 msgstr "Prefijo de marcación rápida"
+
+#~ msgid "Settings"
+#~ msgstr "Configuración"

@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-20 20:02-0500\n"
+"POT-Creation-Date: 2015-06-19 18:50-0400\n"
 "PO-Revision-Date: 2009-04-20 12:04+0100\n"
 "Last-Translator: Séverine GUTIERREZ <severine@medialsace.fr>\n"
 "Language-Team: Français <LL@li.org>\n"
@@ -32,11 +32,7 @@ msgstr ""
 msgid "Set user speed dial"
 msgstr "Fixer la numérotation rapide utilisateur"
 
-#: speeddial.i18n.php:4
-msgid "Settings"
-msgstr ""
-
-#: install.php:5 speeddial.i18n.php:3
+#: install.php:5
 msgid "Speed Dial Functions"
 msgstr "Fonctions de Numérotation Rapide"
 
