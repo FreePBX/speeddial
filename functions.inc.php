@@ -56,7 +56,10 @@ function speeddial_get_config($engine) {
 				$ext->add('app-speeddial', $setcode, '', new ext_goto(1, 's', 'app-speeddial-set'));
 			}
 
-
+			// for i18n playback in multiple languages
+		
+			$ext->add('app-speeddial-set', 'lang-playback', '', new ext_gosubif('$[${DIALPLAN_EXISTS('.'app-speeddial-set'.',${CHANNEL(language)})}]', 'app-speeddial-set'.',${CHANNEL(language)},${ARG1}', 'app-speeddial-set'.',en,${ARG1}'));
+			$ext->add('app-speeddial-set', 'lang-playback', '', new ext_return());
 
 			$ext->add('app-speeddial-set', 's', '', new ext_macro('user-callerid',''));
 			// "enter speed dial location number"
@@ -67,33 +70,14 @@ function speeddial_get_config($engine) {
 			// "enter phone number"
 			$ext->add('app-speeddial-set', 's', 'setnum', new ext_read('newnum','speed-enternumber'));
 
-
 			$ext->add('app-speeddial-set', 's', 'success', new ext_dbput('AMPUSER/${AMPUSER}/speeddials/${newlocation}','${newnum}'));
-			// "speed dial location "
-			$ext->add('app-speeddial-set', 's', '', new ext_playback('speed-dial'));
-			$ext->add('app-speeddial-set', 's', '', new ext_saydigits('${newlocation}'));
-			// "is set to "
-			$ext->add('app-speeddial-set', 's', '', new ext_playback('is-set-to'));
-			$ext->add('app-speeddial-set', 's', '', new ext_saydigits('${newnum}'));
+			$ext->add('app-speeddial-set', 's', '', new ext_gosub('1', 'lang-playback', 'app-speeddial-set', 'hook_0'));
 			$ext->add('app-speeddial-set', 's', '', new ext_hangup(''));
 
-
-			// conflicts menu
-			// "speed dial location"
-			$ext->add('app-speeddial-set', 's', 'conflicts', new ext_playback('speed-dial'));
-			$ext->add('app-speeddial-set', 's', '', new ext_saydigits('${newlocation}'));
-			// "is already set."
-			$ext->add('app-speeddial-set', 's', '', new ext_playback('is-in-use'));
-			// "Press 1 to hear current phone number, 2 to pick a new location, 3 to set a new phone number"
-			$ext->add('app-speeddial-set', 's', '', new ext_background('press-1&to-listen-to-it&press-2&to-enter-a-diff&location&press-3&to-change&telephone-number'));
+			$ext->add('app-speeddial-set', 's', 'conflicts', new ext_gosub('1', 'lang-playback', 'app-speeddial-set', 'hook_1'));
 			$ext->add('app-speeddial-set', 's', '', new ext_waitexten('60'));
 
-			// "speed dial location"
-			$ext->add('app-speeddial-set', '1', '', new ext_playback('speed-dial'));
-			$ext->add('app-speeddial-set', '1', '', new ext_saydigits('${newlocation}'));
-			// "is set to "
-			$ext->add('app-speeddial-set', '1', '', new ext_playback('is-set-to'));
-			$ext->add('app-speeddial-set', '1', '', new ext_saydigits('${SPEEDDIALNUMBER}'));
+			$ext->add('app-speeddial-set', '1', '', new ext_gosub('1', 'lang-playback', 'app-speeddial-set', 'hook_2'));
 			$ext->add('app-speeddial-set', '1', '', new ext_goto('conflicts','s'));
 
 			$ext->add('app-speeddial-set', '2', '', new ext_goto('setloc','s'));
@@ -101,6 +85,41 @@ function speeddial_get_config($engine) {
 			$ext->add('app-speeddial-set', '3', '', new ext_goto('setnum','s'));
 
 			$ext->add('app-speeddial-set', 't', '', new ext_congestion(''));
+
+		        $lang = 'en'; // English
+			$ext->add('app-speeddial-set', $lang, 'hook_0', new ext_playback('speed-dial'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_saydigits('${newlocation}'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_playback('is-set-to'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_saydigits('${newnum}'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_return());
+			$ext->add('app-speeddial-set', $lang, 'hook_1', new ext_playback('speed-dial'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_saydigits('${newlocation}'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_playback('is-in-use'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_background('press-1&to-listen-to-it&press-2&to-enter-a-diff&location&press-3&to-change&telephone-number'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_return());
+			$ext->add('app-speeddial-set', $lang, 'hook_2', new ext_playback('speed-dial'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_saydigits('${newlocation}'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_playback('is-set-to'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_saydigits('${SPEEDDIALNUMBER}'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_return());
+		        $lang = 'ja'; // Japanese
+			$ext->add('app-speeddial-set', $lang, 'hook_0', new ext_playback('speed-dial'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_saydigits('${newlocation}'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_playback('jp-wo'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_saydigits('${newnum}'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_playback('is-set-to'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_return());
+			$ext->add('app-speeddial-set', $lang, 'hook_1', new ext_playback('speed-dial'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_saydigits('${newlocation}'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_playback('jp-wa&is-in-use'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_background('list&press-1&to-enter-a-diff&location&jp-wo&to-enter&press-2&telephone-number&jp-wo&to-change&press-3'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_return());
+			$ext->add('app-speeddial-set', $lang, 'hook_2', new ext_playback('speed-dial'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_saydigits('${newlocation}'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_playback('jp-wa'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_saydigits('${SPEEDDIALNUMBER}'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_playback('is-set-to-2'));
+			$ext->add('app-speeddial-set', $lang, '', new ext_return());
 
 
 			$ext->addInclude('from-internal-additional', 'app-speeddial');
