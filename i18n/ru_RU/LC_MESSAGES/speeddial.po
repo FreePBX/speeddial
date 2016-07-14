@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-19 18:50-0400\n"
+"POT-Creation-Date: 2016-07-13 20:11-0700\n"
 "PO-Revision-Date: 2008-10-12 16:38+0100\n"
 "Last-Translator: Alexander Kozyrev <ceo@postmet.com>\n"
 "Language-Team: Russian <faq@postmet.com>\n"
@@ -20,13 +20,14 @@ msgstr ""
 msgid "Set user speed dial"
 msgstr "Установить быстрый набор пользователю"
 
-#: install.php:5
+#: speeddial.i18n.php:6
+msgid "Settings"
+msgstr "Настройки"
+
+#: install.php:5 speeddial.i18n.php:4
 msgid "Speed Dial Functions"
 msgstr "Функции быстрого набора"
 
 #: install.php:6
 msgid "Speeddial prefix"
 msgstr "Префикс быстрого набора"
-
-#~ msgid "Settings"
-#~ msgstr "Настройки"

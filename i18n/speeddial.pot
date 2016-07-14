@@ -3,13 +3,13 @@
 # For licensing information, please see the file named LICENSE located in the module directory
 #
 # FreePBX language template for speeddial
-# Copyright (C) 2008-2015 Sangoma, Inc.
+# Copyright (C) 2008-2016 Sangoma, Inc.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-19 18:50-0400\n"
+"POT-Creation-Date: 2016-07-13 20:11-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,12 @@ msgstr ""
 msgid "Set user speed dial"
 msgstr ""
 
+#: speeddial.i18n.php:6
+msgid "Settings"
+msgstr ""
+
 #: install.php:5
+#: speeddial.i18n.php:4
 msgid "Speed Dial Functions"
 msgstr ""
 

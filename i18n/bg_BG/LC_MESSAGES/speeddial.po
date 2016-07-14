@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreePBX v2.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-19 18:50-0400\n"
+"POT-Creation-Date: 2016-07-13 20:11-0700\n"
 "PO-Revision-Date: 2014-07-22 13:36+0200\n"
 "Last-Translator: Chavdar <chavdar_75@yahoo.com>\n"
 "Language-Team: Bulgarian <http://git.freepbx.org/projects/freepbx/speeddial/"
@@ -26,13 +26,14 @@ msgstr ""
 msgid "Set user speed dial"
 msgstr "Установи Бързо Избиране за потрeбител"
 
-#: install.php:5
+#: speeddial.i18n.php:6
+msgid "Settings"
+msgstr "Настройки"
+
+#: install.php:5 speeddial.i18n.php:4
 msgid "Speed Dial Functions"
 msgstr "Функции Бързо Избиране"
 
 #: install.php:6
 msgid "Speeddial prefix"
 msgstr "Префикс за Бързо Избиране"
-
-#~ msgid "Settings"
-#~ msgstr "Настройки"
