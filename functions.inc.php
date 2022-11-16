@@ -39,6 +39,7 @@ function speeddial_get_config($engine) {
 			$ext->add('macro-speeddial-lookup', 's', '', new ext_goto('end'));
 			$ext->add('macro-speeddial-lookup', 's', 'failed', new ext_noop('No system or user speeddial found'), 'lookupsys',101);
 			$ext->add('macro-speeddial-lookup', 's', 'end', new ext_noop('End of Speeddial-lookup'));
+			$ext->add('macro-speeddial-lookup', 's', 'return', new ext_return());
 
 			if (!empty($callcode)) {
 				$ext->add('app-speeddial', '_'.$callcode.'.', '', new ext_macro('user-callerid',''));
